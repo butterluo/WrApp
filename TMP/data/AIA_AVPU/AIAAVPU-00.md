@@ -1,0 +1,6 @@
+. . . 
+
+<figure>  
+MEDICAL
+PROTECTION  
+</figure>

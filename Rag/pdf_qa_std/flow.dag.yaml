@@ -1,0 +1,32 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  text:
+    type: string
+    default: "I’m a 36 years old housewife in HK with 2 kids of 7 and 5, and I’m
+      interested in 2 of your products: AIA Voluntary Health Insurance Flexi and
+      AIA Voluntary Health Insurance Privilege Ultra. Which one is more suitable
+      for my situation and why?"
+outputs:
+  output_prompt:
+    type: string
+    reference: ${echo_my_prompt.output}
+nodes:
+- name: runqsep
+  type: llm
+  source:
+    type: code
+    path: q_seperate.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    text: ${inputs.text}
+  connection: open_ai_connection
+  api: chat
+- name: echo_my_prompt
+  type: python
+  source:
+    type: code
+    path: hello.py
+  inputs:
+    input1: ${runqsep.output}
