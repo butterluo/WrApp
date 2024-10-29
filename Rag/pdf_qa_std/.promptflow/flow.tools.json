@@ -84,6 +84,28 @@
       },
       "source": "rag_prd2.py",
       "function": "my_python_tool"
+    },
+    "prd_cmpr.py": {
+      "type": "python",
+      "inputs": {
+        "scor_ls1": {
+          "type": [
+            "object"
+          ]
+        },
+        "scor_ls2": {
+          "type": [
+            "object"
+          ]
+        },
+        "usr_q": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "prd_cmpr.py",
+      "function": "my_python_tool"
     }
   }
 }

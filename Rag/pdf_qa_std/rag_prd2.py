@@ -79,7 +79,7 @@ from promptflow import tool
 def my_python_tool(prd_ls: List[str], analyz_result:str) -> str:
     prdname = prd_ls[1].strip()
     # prdname = "AIA Voluntary Health Insurance Privilege Ultra"
-    idxname = "aia_avpu" #prd_idx_map[prdname] #"aia_avpu"
+    idxname = prd_idx_map[prdname] #"aia_avpu"
 
     analyz_result_ls = analyz_result.split("\n\n")[1:]
 
@@ -127,7 +127,7 @@ def my_python_tool(prd_ls: List[str], analyz_result:str) -> str:
     scro_prd_prmp = Prompty.load(source=os.path.normpath(os.path.join(os.path.abspath(__file__),"..","scro_prd.prompty")))
     resultstr = scro_prd_prmp(usr_requirment=analyz_result_ls, rag_result=rag_ls)
 
-    return {"score":extract_score(resultstr), "resultstr":resultstr}
+    return [{"score":extract_score(resultstr), "resultstr":resultstr, "prdname":prdname}]
 
 
 

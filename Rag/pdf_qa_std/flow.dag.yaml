@@ -11,7 +11,7 @@ inputs:
 outputs:
   output_prompt:
     type: string
-    reference: ${rag_prd1.output}
+    reference: ${prd_cmpr.output}
 nodes:
 - name: runqsep
   type: llm
@@ -58,3 +58,12 @@ nodes:
   inputs:
     prd_ls: ${split_prd.output}
     analyz_result: ${analyz_q.output}
+- name: prd_cmpr
+  type: python
+  source:
+    type: code
+    path: prd_cmpr.py
+  inputs:
+    scor_ls1: ${rag_prd1.output}
+    scor_ls2: ${rag_prd2.output}
+    usr_q: ${inputs.text}
