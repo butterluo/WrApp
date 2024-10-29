@@ -1,0 +1,294 @@
+---
+name: rag_prd_tst
+description: A basic prompt that uses the GPT-3 chat API to answer questions
+model:
+  api: chat
+  configuration:
+    type: azure_openai
+    azure_deployment: gpt-4o
+    connection: open_ai_connection
+  parameters:
+    temperature: 0
+
+---
+system:
+你是一个资深的保险销售,善于深入了解用户的需求,从各个方面分析一个保险产品是否符合该用户,并为该产品对该用户的适合程度进行打分.
+
+user:
+
+你是一个资深的保险销售,善于深入了解用户的需求信息,从各个方面分析一个保险产品是否符合该用户,并为该产品对该用户的需求适合程度进行打分.
+
+# 该用户的对保险产品的需求用英文描述如下:
+
+1. **Personal and Family Needs:**
+   - The user is interested in health insurance products, indicating a need for health coverage.
+   - The user is a young father, which may suggest a focus on ensuring health protection for herself and her children.
+
+2. **Family Financial Situation:**
+   - No specific details about income or financial burdens are provided.
+
+3. **Children's Needs:**
+   - The user has two young children, aged 7 and 5, which may imply a need for family health coverage.
+
+4. **Budget and Financial Planning:**
+   - No specific budget information is provided, but the interest in two specific products suggests some level of financial planning.
+
+In summary, the user is a young father in Hong Kong looking for suitable health insurance for herself and potentially her children. Further information about her financial situation and specific coverage needs would be helpful to make a more tailored recommendation.
+
+
+# 与该用户需求相关的产品信息如下:
+
+## Example. . .
+
+
+(The following example is hypothetical and for illustrative purposes only. If
+there are any changes in the values, no separate announcement will be made.)  
+<table>
+<tr>
+<td colspan="2">Policyholder and insured person:</td>
+<td>William (age 40, non-smoker)</td>
+</tr>
+<tr>
+<td></td>
+<td>Occupation:</td>
+<td>Senior IT Manager</td>
+</tr>
+<tr>
+<td></td>
+<td>Family status:</td>
+<td>Married with two children</td>
+</tr>
+</table>  
+<figure>
+</figure>  
+William is a working professional with heavy pressure at work, which is why he wants both
+himself and family to stay ahead of any potential health threats. He purchases AIA Voluntary
+Health Insurance Flexi Scheme (Ward) for himself, his wife and his children.  
+Guaranteed
+lifetime renewal  
+In addition to the essential medical cover required by Voluntary Health Insurance Scheme, AIA Voluntary Health Insurance Flexi
+Scheme also offers supplemental major medical benefits and Personal Medical Case Management Services with flexibility to
+reduce the financial impact when something unpredictable happens.
+
+## Example. Insured person's age at policy application. Purchasing AIA Voluntary Health Insurance Flexi Scheme Enjoying both medical protection and applying for tax deductions.
+
+
+William has symptoms that might be from severe headache after purchased the plan,
+he is recommended for an MRI scan followed by a biopsy.  
+Unfortunately, William is diagnosed with Benign Brain Tumor, 2 months after
+purchasing AIA Voluntary Health Insurance Flexi Scheme. He is recommended
+for removal of brain tumor.  
+Unfortunately, in the same year, William is diagnosed
+coronary artery disease and is recommended for
+angioplasty.
+
+## Important Information. . .
+
+
+This brochure does not contain the full terms and conditions of the
+policy. It is not, and does not form part of, a contract of insurance
+and is designed to provide an overview of the key features of this
+product. The precise terms and conditions of this plan are specified
+in the policy contract. Please refer to the policy contract for the
+definitions of capitalised terms, and the exact and complete terms
+and conditions of cover. In case you want to read policy contract
+sample before making an application, you can obtain a copy from
+AIA. This brochure should be read along with the illustrative
+document (if any) and other relevant marketing materials, which
+include additional information and important considerations
+about this product. We would like to remind you to review the
+relevant product materials provided to you and seek independent
+professional advice if necessary.  
+This plan is an insurance plan without any savings element. All
+premiums are paid for the insurance and related costs.  
+This brochure is for distribution in Hong Kong only.
+
+## With quality medical protection as your safety net, you can chase your dreams with confidence. Protect your whole family and apply for a higher tax deduction amount. .
+
+
+To help you budget smarter, the premiums you pay for
+AIA Voluntary Health Insurance Flexi Scheme is eligible
+to be deducted from your annual taxable income. Taxpayer
+who is the policyholder can apply for a tax deduction of up
+to HKD8,000 per insured person, which the insured person
+of the Certified Plan should be the taxpayer himself or any
+specified relatives*, in each assessment year.  
+There is no cap on the number of specified relatives* that
+a taxpayer can use to claim tax deductions as long as all the
+policies are held by the same taxpayer and cover yourself
+and / or your specified relatives \*. Specified relatives\* include
+your spouse or child, or a parent, grandparent or sibling of
+you or your spouse.  
+In other words, if you take up AIA Voluntary Health Insurance
+Flexi Scheme for yourself, your spouse, your son and your
+mother as an example (i.e. four insured persons) and pay
+the required premiums in the same taxable year, the annual
+tax deduction amount for you would be up to HKD32,000
+(i.e. HKD8,000 x 4).  
+The illustration below shows the tax deduction amount you
+could claim if you were the policyholder for four insured
+persons, for example.  
+<figure>  
+Purchase  
+A  
+=
++  
+AIA Voluntary Health
+Insurance Flexi Scheme  
+for yourself, your spouse,
+your son and your mother  
+HKD8,000  
+The deduction ceiling
+per insured person
+per year  
+TAX
+$  
+Annual tax deduction ceiling
+for the premiums paid
+(e.g. for 4 insured persons)
+HKD32,000
+(i.e. HKD8,000 x 4)  
+</figure>  
+For details on tax deductions, please visit www.vhis.gov.hk and
+consult your own tax and accounting advisors for tax advice.  
+\* Specified relatives are defined under Inland Revenue Ordinance (Chapter 112).  
+<figure>
+</figure>
+
+## Important Information. Key Product Risks. .
+
+
+1\. You need to pay the premium for this plan for life as long as you
+renew for this plan. If you do not pay the premium within 30
+days of the premium due date, the policy will be terminated and
+you / the insured person will lose the cover.  
+2\. You may request for the termination of your policy by notifying
+us in written notice. Also, we will terminate your policy and you /
+the insured person will lose the cover when one of the following
+happens:  
+· the insured person passes away;  
+· you do not pay the premium within 30 days after the
+premium due date;  
+· the company has ceased to have the requisite authorization
+under the Insurance Ordinance to write or continue to write
+the plan; or  
+· when taking this plan as an add-on plan of any basic plan
+which has been terminated. For continuation of the cover,
+you may apply to convert this add-on plan to a stand-alone
+plan by giving us a written notice.  
+3\. We underwrite the plan and you are subject to our credit risk.
+If we are unable to satisfy the financial obligations of the policy,
+the insured person may lose his cover and you may lose the
+remaining premium for that policy year.  
+4\. You are subject to exchange rate risks for plans denominated
+in currencies other than the local currency. Exchange rates
+fluctuate from time to time. You may suffer a loss of your benefit
+values and the subsequent premium payments (if any) may
+be higher than your initial premium payment as a result of
+exchange rate fluctuations. You should consider the exchange
+rate risks and decide whether to take such risks.  
+5\. The future medical costs will be higher than they are today
+due to inflation. Hence, the benefit amounts and the future
+premium rate of this plan may be revised to reflect the inflation.
+
+## With quality medical protection as your safety net, you can chase your dreams with confidence. Cover at a glance. .
+
+
+<table>
+<tr>
+<th>Type of the Certified Plan</th>
+<th colspan="2">Flexi Plan</th>
+</tr>
+<tr>
+<th>Name of the Certified Plan</th>
+<th colspan="2">AIA Voluntary Health Insurance Flexi Scheme</th>
+</tr>
+<tr>
+<th>Certification Number and Plan Option</th>
+<th>HKD</th>
+<th>USD</th>
+</tr>
+<tr>
+<td>Ward Plan:</td>
+<td>F00022-01-000-03</td>
+<td>F00022-04-000-03</td>
+</tr>
+<tr>
+<td>Semi-Private Plan:</td>
+<td>F00022-02-000-03</td>
+<td>F00022-05-000-03</td>
+</tr>
+<tr>
+<td>Standard Private Plan:</td>
+<td>F00022-03-000-03</td>
+<td>F00022-06-000-03</td>
+</tr>
+<tr>
+<td>Product Nature</td>
+<td colspan="2">Medical protection insurance plan (Reimbursement)</td>
+</tr>
+<tr>
+<td>Plan Type</td>
+<td colspan="2">Basic Plan and add-on plan</td>
+</tr>
+<tr>
+<td>Premium Payment Mode</td>
+<td colspan="2">Basic plan: annually / semi-annually / quarterly / monthly Add-on plan: follow the corresponding basic plan</td>
+</tr>
+<tr>
+<td>Insured Person's Age at Application</td>
+<td colspan="2">15 days to age 80</td>
+</tr>
+<tr>
+<td>Guaranteed Renewal</td>
+<td colspan="2">Whole Life</td>
+</tr>
+</table>  
+\# Tax deductions is one of the allowable deductions from assessable income, it does not equate to a direct deduction from total tax payable. For details of tax
+deductions, please visit Inland Revenue Department (IRD) of HKSAR website and consult your tax and accounting advisors for tax advice.  
+\* Specified relatives are defined under Inland Revenue Ordinance (Chapter 112).  
+<table>
+<tr>
+<th>Geographical Cover</th>
+<th>Worldwide (except for psychiatric treatments and worldwide emergency assistance services)</th>
+</tr>
+<tr>
+<td>Lifetime Benefit Limit</td>
+<td>Nil</td>
+</tr>
+<tr>
+<td>Annual Benefit Limit</td>
+<td>Nil</td>
+</tr>
+<tr>
+<td>Core Benefits</td>
+<td>· confinement benefits including room &amp; board and attending doctor's visit fee, etc. · inpatient and day case procedure · prescribed diagnostic imaging tests · prescribed non-surgical cancer treatments · outpatient care before and after confinement or day case procedure · long term treatment for dialysis</td>
+</tr>
+<tr>
+<td>Other Benefits</td>
+<td>· supplemental major medical benefits (per disability per policy year) · Personal Medical Case Management Services with Rehabilitation Management · worldwide emergency assistance services*</td>
+</tr>
+<tr>
+<td>No Claim Discount</td>
+<td>No claim in 3 or more consecutive policy years entitles you with a premium discount on the next policy anniversary, up to 25% of the total premiums paid for the preceding policy year.</td>
+</tr>
+<tr>
+<td>Network Privileges</td>
+<td>If you select the service provided from our medical network, you can enjoy the following privileges: · higher benefit limits · lower coinsurance percentage for supplemental major medical benefits · medical expense pre-approval application · add-on cashless arrangement for day case procedure</td>
+</tr>
+</table>  
+For more information, please read the "Benefit schedule for AIA Voluntary Health Insurance Flexi Scheme" in this brochure.  
+<figure>
+</figure>  
+<figure>
+</figure>
+
+
+# 分析保险产品是否符合该用户需求要包括如下多个方面:
+  - 该保险产品提供了哪些保障和福利？
+  - 保费是多少？缴费期限和方式是什么？
+  - 是否包括附加险或特殊条款？
+  - 该产品与其他产品相比，有哪些优势或劣势？
+
+
+请基于用户对保险产品的需求, 结合与用户需求相关的产品信息, 从上述的多个方面一步步地分析该保险产品是否符合用户需求. 并最终为该产品对该用户的需求适合程度打分, 分数为整数, 最低分0分, 表示完全不适合, 最高分10分, 表示很适合. 注意, 在回复的最后以类似例子"Score: 5"的方式给出一个整数来代表分数, 若不确定如何为该产品对该用户的需求适合程度打分, 请在最后回复"I don't know.'. 所有回复请使用英文, 注意, 要在回复的最后以类似例子"Score: 7"的方式给出一个整数来代表分数.

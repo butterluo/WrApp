@@ -4,14 +4,14 @@ environment:
 inputs:
   text:
     type: string
-    default: "I’m a 36 years old housewife in HK with 2 kids of 7 and 5, and I’m
-      interested in 2 of your products: AIA Voluntary Health Insurance Flexi and
-      AIA Voluntary Health Insurance Privilege Ultra. Which one is more suitable
-      for my situation and why?"
+    default: "I’m a 36 years single woman in HK without children, and I’m interested
+      in 2 of your products: AIA Voluntary Health Insurance Flexi and AIA
+      Voluntary Health Insurance Privilege Ultra. Which one is more suitable for
+      my situation and why?"
 outputs:
   output_prompt:
     type: string
-    reference: ${echo_my_prompt.output}
+    reference: ${rag_prd1.output}
 nodes:
 - name: runqsep
   type: llm
@@ -21,12 +21,40 @@ nodes:
   inputs:
     deployment_name: gpt-4o
     text: ${inputs.text}
+    temperature: 0
   connection: open_ai_connection
   api: chat
-- name: echo_my_prompt
+- name: split_prd
   type: python
   source:
     type: code
     path: hello.py
   inputs:
     input1: ${runqsep.output}
+- name: analyz_q
+  type: llm
+  source:
+    type: code
+    path: analyz_q.jinja2
+  inputs:
+    temperature: 0
+    deployment_name: gpt-4o
+    usr_q: ${inputs.text}
+  connection: open_ai_connection
+  api: chat
+- name: rag_prd1
+  type: python
+  source:
+    type: code
+    path: rag_prd1.py
+  inputs:
+    prd_ls: ${split_prd.output}
+    analyz_result: ${analyz_q.output}
+- name: rag_prd2
+  type: python
+  source:
+    type: code
+    path: rag_prd2.py
+  inputs:
+    prd_ls: ${split_prd.output}
+    analyz_result: ${analyz_q.output}
