@@ -4,7 +4,7 @@ environment:
 inputs:
   text:
     type: string
-    default: "I’m a 36 years single woman in HK without children, and I’m interested
+    default: "I’m a 18 years single woman in HK without children, and I’m interested
       in 2 of your products: AIA Voluntary Health Insurance Flexi and AIA
       Voluntary Health Insurance Privilege Ultra. Which one is more suitable for
       my situation and why?"
@@ -14,34 +14,16 @@ outputs:
     reference: ${prd_cmpr.output}
 nodes:
 - name: runqsep
-  type: llm
-  source:
-    type: code
-    path: q_seperate.jinja2
-  inputs:
-    deployment_name: gpt-4o
-    text: ${inputs.text}
-    temperature: 0
-  connection: open_ai_connection
-  api: chat
+  use_variants: true
 - name: split_prd
   type: python
   source:
     type: code
-    path: hello.py
+    path: split_prd.py
   inputs:
     input1: ${runqsep.output}
 - name: analyz_q
-  type: llm
-  source:
-    type: code
-    path: analyz_q.jinja2
-  inputs:
-    temperature: 0
-    deployment_name: gpt-4o
-    usr_q: ${inputs.text}
-  connection: open_ai_connection
-  api: chat
+  use_variants: true
 - name: rag_prd1
   type: python
   source:
@@ -67,3 +49,58 @@ nodes:
     scor_ls1: ${rag_prd1.output}
     scor_ls2: ${rag_prd2.output}
     usr_q: ${inputs.text}
+node_variants:
+  runqsep:
+    default_variant_id: variant_1
+    variants:
+      variant_0:
+        node:
+          type: llm
+          source:
+            type: code
+            path: q_seperate.jinja2
+          inputs:
+            deployment_name: gpt-4o
+            text: ${inputs.text}
+            temperature: 0
+          connection: open_ai_connection
+          api: chat
+      variant_1:
+        node:
+          type: llm
+          source:
+            type: code
+            path: q_seperate_e.jinja2
+          inputs:
+            deployment_name: gpt-4o
+            text: ${inputs.text}
+            temperature: 0
+          connection: open_ai_connection
+          api: chat
+  analyz_q:
+    default_variant_id: variant_1
+    variants:
+      variant_0:
+        node:
+          type: llm
+          source:
+            type: code
+            path: analyz_q.jinja2
+          inputs:
+            temperature: 0
+            deployment_name: gpt-4o
+            usr_q: ${inputs.text}
+          connection: open_ai_connection
+          api: chat
+      variant_1:
+        node:
+          type: llm
+          source:
+            type: code
+            path: analyz_q_variant_1.jinja2
+          inputs:
+            temperature: 0
+            deployment_name: gpt-4o
+            usr_q: ${inputs.text}
+          connection: open_ai_connection
+          api: chat

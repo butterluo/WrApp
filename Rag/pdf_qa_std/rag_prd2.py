@@ -35,7 +35,6 @@ def rag_score_prd(idxname, analyz_result_ls):
             search_text=None,  
             vector_queries=[vector_query_1, vector_query_2],
             select=["title", "chunk", "chunk_id"],
-            # query_type=QueryType.SEMANTIC, semantic_configuration_name='my-semantic-config', query_caption=QueryCaptionType.EXTRACTIVE, query_answer=QueryAnswerType.EXTRACTIVE,
             top=2
         )
         for result in results: 
@@ -47,34 +46,14 @@ def rag_score_prd(idxname, analyz_result_ls):
                 ctnt = result['chunk']
                 rag_ls.append( {"title":title, "content":ctnt} )
                 chunk_set.add(chunkid)
-        # for result in results:  
-        #     print(f"Title: {result['title']}")  
-        #     print(f"Score: {result['@search.score']}")  
-        #     print(f"Content: {result['chunk']}")  
-        #     print(f"Category: {result['chunk_id']}")  
-        #     # print(f"Reranker Score: {result['@search.reranker_score']}")
-        #     # captions = result["@search.captions"]
-        #     # if captions:
-        #     #     caption = captions[0]
-        #     #     if caption.highlights:
-        #     #         print(f"Caption: {caption.highlights}")
-        #     #     else:
-        #     #         print(f"Caption: {caption.text}")
-        #     print("\n")
     
     scro_prd_prmp = Prompty.load(source=os.path.normpath(os.path.join(os.path.abspath(__file__),"..","scro_prd.prompty")))
     resultstr = scro_prd_prmp(usr_requirment=analyz_result_ls, rag_result=rag_ls)
     return resultstr
 
-# from rag_aia_prd import rag_score_prd, prd_idx_map
-# from rag_aia_prd import extract_score
-
 from typing import List
 from promptflow import tool
 
-# The inputs section will change based on the arguments of the tool function, after you save the code
-# Adding type to arguments and return value will help the system show the types properly
-# Please update the function name/signature per need
 @tool
 def my_python_tool(prd_ls: List[str], analyz_result:str) -> str:
     prdname = prd_ls[1].strip()
@@ -109,22 +88,8 @@ def my_python_tool(prd_ls: List[str], analyz_result:str) -> str:
                 ctnt = result['chunk']
                 rag_ls.append( {"title":title, "content":ctnt} )
                 chunk_set.add(chunkid)
-        # for result in results:  
-        #     print(f"Title: {result['title']}")  
-        #     print(f"Score: {result['@search.score']}")  
-        #     print(f"Content: {result['chunk']}")  
-        #     print(f"Category: {result['chunk_id']}")  
-        #     # print(f"Reranker Score: {result['@search.reranker_score']}")
-        #     # captions = result["@search.captions"]
-        #     # if captions:
-        #     #     caption = captions[0]
-        #     #     if caption.highlights:
-        #     #         print(f"Caption: {caption.highlights}")
-        #     #     else:
-        #     #         print(f"Caption: {caption.text}")
-        #     print("\n")
     
-    scro_prd_prmp = Prompty.load(source=os.path.normpath(os.path.join(os.path.abspath(__file__),"..","scro_prd.prompty")))
+    scro_prd_prmp = Prompty.load(source=os.path.normpath(os.path.join(os.path.abspath(__file__),"..","scro_prd_e.prompty")))
     resultstr = scro_prd_prmp(usr_requirment=analyz_result_ls, rag_result=rag_ls)
 
     return [{"score":extract_score(resultstr), "resultstr":resultstr, "prdname":prdname}]

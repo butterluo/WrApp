@@ -17,6 +17,6 @@ def my_python_tool(scor_ls1: List, scor_ls2: List, usr_q:str) -> str:
         if d["score"] > scor:
             prefer = d
             scor = d["score"]
-    cmpr_prd_prmp = Prompty.load(source=os.path.normpath(os.path.join(os.path.abspath(__file__),"..","prd_cmpr.prompty")))
+    cmpr_prd_prmp = Prompty.load(source=os.path.normpath(os.path.join(os.path.abspath(__file__),"..","prd_cmpr_e.prompty")))
     result = cmpr_prd_prmp(usr_q=usr_q, prdname=prefer["prdname"], reason=prefer["resultstr"])
     return result

@@ -106,6 +106,83 @@
       },
       "source": "prd_cmpr.py",
       "function": "my_python_tool"
+    },
+    "split_prd.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "split_prd.py",
+      "function": "my_python_tool"
+    },
+    "llm_node_yrrw.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "llm_node_yrrw.jinja2"
+    },
+    "llm_node_c817.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "llm_node_c817.jinja2"
+    },
+    "runqsep_variant_1.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "text": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "runqsep_variant_1.jinja2"
+    },
+    "q_seperate_e.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "text": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "q_seperate_e.jinja2"
+    },
+    "analyz_q_variant_1.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "usr_q": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "analyz_q_variant_1.jinja2"
     }
   }
 }

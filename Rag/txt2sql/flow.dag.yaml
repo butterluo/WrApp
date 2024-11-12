@@ -1,0 +1,9 @@
+inputs:
+  txt:
+    type: string
+    default: may i xxx
+outputs:
+  result:
+    type: string
+    reference: ${inputs.txt}
+nodes: []
