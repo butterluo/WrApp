@@ -1,0 +1,772 @@
+{
+  "flow_runs": [
+    {
+      "run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_0",
+      "status": "Completed",
+      "error": null,
+      "inputs": {
+        "txt": "I'm agent E1234, I want to know my performance."
+      },
+      "output": {
+        "result": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!"
+      },
+      "metrics": null,
+      "request": null,
+      "parent_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d",
+      "root_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d",
+      "source_run_id": null,
+      "flow_id": "default_flow_id",
+      "start_time": "2024-11-13T03:04:44.944601Z",
+      "end_time": "2024-11-13T03:07:49.400281Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "flow",
+          "node_name": "flow",
+          "type": "Flow",
+          "start_time": 1731438284.944601,
+          "end_time": 1731438469.400281,
+          "children": [
+            {
+              "name": "AzureOpenAI.chat",
+              "type": "Function",
+              "inputs": {
+                "prompt": "\nsystem:\nYou are an SQL expert, skilled in translating user requirements and questions into SQL queries for MySQL, based on the analysis of table information.\n\nuser:\n# The table creation statement and table information for the insurance agent performance score table are as follows:\n\nCREATE TABLE Agent_Profile(\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  Agent_ID VARCHAR(200) COMMENT 'Agent ID',\n  Enroll_Date DATE COMMENT 'Enroll Date of an Agent',\n  Performance_Score VARCHAR(200) COMMENT 'Performance Score or Performance Level of an Agent'\n) COMMENT='Agent Profile Information';\n\n# The user's question is as follows:\n\n{{question}}\n\nBased on the analysis of the table information, convert the user's question above into a MySQL query SQL statement.",
+                "deployment_name": "gpt-4o",
+                "temperature": 0.0,
+                "question": "I'm agent E1234, I want to know my performance.",
+                "_inputs_to_escape": [
+                  "question"
+                ]
+              },
+              "output": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```",
+              "start_time": 1731438284.947202,
+              "end_time": 1731438377.825323,
+              "error": null,
+              "children": [
+                {
+                  "name": "openai_chat",
+                  "type": "LLM",
+                  "inputs": {
+                    "model": "gpt-4o",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are an SQL expert, skilled in translating user requirements and questions into SQL queries for MySQL, based on the analysis of table information."
+                      },
+                      {
+                        "role": "user",
+                        "content": "# The table creation statement and table information for the insurance agent performance score table are as follows:\n\nCREATE TABLE Agent_Profile(\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  Agent_ID VARCHAR(200) COMMENT 'Agent ID',\n  Enroll_Date DATE COMMENT 'Enroll Date of an Agent',\n  Performance_Score VARCHAR(200) COMMENT 'Performance Score or Performance Level of an Agent'\n) COMMENT='Agent Profile Information';\n\n# The user's question is as follows:\n\nI'm agent E1234, I want to know my performance.\n\nBased on the analysis of the table information, convert the user's question above into a MySQL query SQL statement."
+                      }
+                    ],
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "n": 1,
+                    "stream": false,
+                    "presence_penalty": 0.0,
+                    "frequency_penalty": 0.0,
+                    "user": ""
+                  },
+                  "output": {
+                    "id": "chatcmpl-ASxySSBh4gh06KlzqKp2DHwRa2EE5",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```",
+                          "refusal": null,
+                          "role": "assistant",
+                          "audio": null,
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1731467088,
+                    "model": "gpt-4o-2024-08-06",
+                    "object": "chat.completion",
+                    "service_tier": null,
+                    "system_fingerprint": "fp_d54531d9eb",
+                    "usage": {
+                      "completion_tokens": 22,
+                      "prompt_tokens": 165,
+                      "total_tokens": 187,
+                      "completion_tokens_details": null,
+                      "prompt_tokens_details": null
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "jailbreak": {
+                            "filtered": false,
+                            "detected": false
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1731438284.948878,
+                  "end_time": 1731438377.82502,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "4eae687a-b106-43b4-a08b-09d283355375",
+                  "id": "2bc1ce94-5c50-4176-8470-024709320315",
+                  "function": "openai.resources.chat.completions.Completions.create",
+                  "system_metrics": {
+                    "completion_tokens": 22,
+                    "prompt_tokens": 165,
+                    "total_tokens": 187
+                  }
+                }
+              ],
+              "node_name": "q2sql",
+              "parent_id": "",
+              "id": "4eae687a-b106-43b4-a08b-09d283355375",
+              "function": "AzureOpenAI.chat",
+              "system_metrics": {
+                "completion_tokens": 22,
+                "prompt_tokens": 165,
+                "total_tokens": 187
+              }
+            },
+            {
+              "name": "my_python_tool",
+              "type": "Function",
+              "inputs": {
+                "input1": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```"
+              },
+              "output": "[('B+',)]",
+              "start_time": 1731438377.835779,
+              "end_time": 1731438377.840854,
+              "error": null,
+              "children": [],
+              "node_name": "runsql",
+              "parent_id": "",
+              "id": "ec0437e7-d512-48ab-80ac-8c3379d6698c",
+              "function": "my_python_tool",
+              "system_metrics": {}
+            },
+            {
+              "name": "AzureOpenAI.chat",
+              "type": "Function",
+              "inputs": {
+                "prompt": "system:\nYou are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees.  \n\nuser:\nYou are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees.  \n   \n# The question asked by the employee is as follows:  \n{{usrq}}  \n   \n# Based on the employee's question, your colleague has retrieved the following results from the database:  \n{{sqlresult}}  \n   \nPlease politely respond to the employee's question in English, incorporating the results retrieved from the database. Note, do not use an email format.",
+                "deployment_name": "gpt-4o",
+                "temperature": 0.0,
+                "max_tokens": 1024,
+                "usrq": "I'm agent E1234, I want to know my performance.",
+                "sqlresult": "[('B+',)]",
+                "_inputs_to_escape": [
+                  "usrq"
+                ],
+                "stream": false
+              },
+              "output": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!",
+              "start_time": 1731438377.848696,
+              "end_time": 1731438469.396032,
+              "error": null,
+              "children": [
+                {
+                  "name": "openai_chat",
+                  "type": "LLM",
+                  "inputs": {
+                    "model": "gpt-4o",
+                    "messages": [
+                      {
+                        "role": "system",
+                        "content": "You are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees."
+                      },
+                      {
+                        "role": "user",
+                        "content": "You are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees.  \n   \n# The question asked by the employee is as follows:  \nI'm agent E1234, I want to know my performance.  \n   \n# Based on the employee's question, your colleague has retrieved the following results from the database:  \n[('B+',)]  \n   \nPlease politely respond to the employee's question in English, incorporating the results retrieved from the database. Note, do not use an email format."
+                      }
+                    ],
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "n": 1,
+                    "stream": false,
+                    "presence_penalty": 0.0,
+                    "frequency_penalty": 0.0,
+                    "user": "",
+                    "max_tokens": 1024
+                  },
+                  "output": {
+                    "id": "chatcmpl-ASxzuGhdCuup33qjMQF26O04oCFIQ",
+                    "choices": [
+                      {
+                        "finish_reason": "stop",
+                        "index": 0,
+                        "logprobs": null,
+                        "message": {
+                          "content": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!",
+                          "refusal": null,
+                          "role": "assistant",
+                          "audio": null,
+                          "function_call": null,
+                          "tool_calls": null
+                        },
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ],
+                    "created": 1731467178,
+                    "model": "gpt-4o-2024-08-06",
+                    "object": "chat.completion",
+                    "service_tier": null,
+                    "system_fingerprint": "fp_d54531d9eb",
+                    "usage": {
+                      "completion_tokens": 54,
+                      "prompt_tokens": 147,
+                      "total_tokens": 201,
+                      "completion_tokens_details": null,
+                      "prompt_tokens_details": null
+                    },
+                    "prompt_filter_results": [
+                      {
+                        "prompt_index": 0,
+                        "content_filter_results": {
+                          "hate": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "jailbreak": {
+                            "filtered": false,
+                            "detected": false
+                          },
+                          "self_harm": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "sexual": {
+                            "filtered": false,
+                            "severity": "safe"
+                          },
+                          "violence": {
+                            "filtered": false,
+                            "severity": "safe"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "start_time": 1731438377.851768,
+                  "end_time": 1731438469.395419,
+                  "error": null,
+                  "children": [],
+                  "node_name": null,
+                  "parent_id": "5fed885f-c4bd-4942-a297-1ecaba7daf6b",
+                  "id": "eefe81ab-6377-45e2-8c03-3f424a2c05c4",
+                  "function": "openai.resources.chat.completions.Completions.create",
+                  "system_metrics": {
+                    "completion_tokens": 54,
+                    "prompt_tokens": 147,
+                    "total_tokens": 201
+                  }
+                }
+              ],
+              "node_name": "replyq",
+              "parent_id": "",
+              "id": "5fed885f-c4bd-4942-a297-1ecaba7daf6b",
+              "function": "AzureOpenAI.chat",
+              "system_metrics": {
+                "completion_tokens": 54,
+                "prompt_tokens": 147,
+                "total_tokens": 201
+              }
+            }
+          ],
+          "system_metrics": {
+            "duration": 184.45568,
+            "prompt_tokens": 312,
+            "completion_tokens": 76,
+            "total_tokens": 388
+          },
+          "inputs": {
+            "txt": "I'm agent E1234, I want to know my performance."
+          },
+          "output": {
+            "result": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!"
+          },
+          "error": null
+        }
+      ],
+      "name": "",
+      "description": "",
+      "tags": null,
+      "system_metrics": {
+        "duration": 184.45568,
+        "prompt_tokens": 312,
+        "completion_tokens": 76,
+        "total_tokens": 388
+      },
+      "result": {
+        "result": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!"
+      },
+      "upload_metrics": false,
+      "otel_trace_id": "0xd0aa8bcfeb4e999626abbcfbcb2668fb",
+      "message_format": "basic"
+    }
+  ],
+  "node_runs": [
+    {
+      "node": "q2sql",
+      "flow_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d",
+      "run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_q2sql_0",
+      "status": "Completed",
+      "inputs": {
+        "deployment_name": "gpt-4o",
+        "temperature": 0.0,
+        "question": "I'm agent E1234, I want to know my performance.",
+        "_inputs_to_escape": [
+          "question"
+        ]
+      },
+      "output": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_0",
+      "start_time": "2024-11-13T03:04:44.947081Z",
+      "end_time": "2024-11-13T03:06:17.831202Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Function",
+          "inputs": {
+            "prompt": "\nsystem:\nYou are an SQL expert, skilled in translating user requirements and questions into SQL queries for MySQL, based on the analysis of table information.\n\nuser:\n# The table creation statement and table information for the insurance agent performance score table are as follows:\n\nCREATE TABLE Agent_Profile(\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  Agent_ID VARCHAR(200) COMMENT 'Agent ID',\n  Enroll_Date DATE COMMENT 'Enroll Date of an Agent',\n  Performance_Score VARCHAR(200) COMMENT 'Performance Score or Performance Level of an Agent'\n) COMMENT='Agent Profile Information';\n\n# The user's question is as follows:\n\n{{question}}\n\nBased on the analysis of the table information, convert the user's question above into a MySQL query SQL statement.",
+            "deployment_name": "gpt-4o",
+            "temperature": 0.0,
+            "question": "I'm agent E1234, I want to know my performance.",
+            "_inputs_to_escape": [
+              "question"
+            ]
+          },
+          "output": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```",
+          "start_time": 1731438284.947202,
+          "end_time": 1731438377.825323,
+          "error": null,
+          "children": [
+            {
+              "name": "openai_chat",
+              "type": "LLM",
+              "inputs": {
+                "model": "gpt-4o",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are an SQL expert, skilled in translating user requirements and questions into SQL queries for MySQL, based on the analysis of table information."
+                  },
+                  {
+                    "role": "user",
+                    "content": "# The table creation statement and table information for the insurance agent performance score table are as follows:\n\nCREATE TABLE Agent_Profile(\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  Agent_ID VARCHAR(200) COMMENT 'Agent ID',\n  Enroll_Date DATE COMMENT 'Enroll Date of an Agent',\n  Performance_Score VARCHAR(200) COMMENT 'Performance Score or Performance Level of an Agent'\n) COMMENT='Agent Profile Information';\n\n# The user's question is as follows:\n\nI'm agent E1234, I want to know my performance.\n\nBased on the analysis of the table information, convert the user's question above into a MySQL query SQL statement."
+                  }
+                ],
+                "temperature": 0.0,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": false,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "user": ""
+              },
+              "output": {
+                "id": "chatcmpl-ASxySSBh4gh06KlzqKp2DHwRa2EE5",
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "content": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```",
+                      "refusal": null,
+                      "role": "assistant",
+                      "audio": null,
+                      "function_call": null,
+                      "tool_calls": null
+                    },
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ],
+                "created": 1731467088,
+                "model": "gpt-4o-2024-08-06",
+                "object": "chat.completion",
+                "service_tier": null,
+                "system_fingerprint": "fp_d54531d9eb",
+                "usage": {
+                  "completion_tokens": 22,
+                  "prompt_tokens": 165,
+                  "total_tokens": 187,
+                  "completion_tokens_details": null,
+                  "prompt_tokens_details": null
+                },
+                "prompt_filter_results": [
+                  {
+                    "prompt_index": 0,
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "jailbreak": {
+                        "filtered": false,
+                        "detected": false
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ]
+              },
+              "start_time": 1731438284.948878,
+              "end_time": 1731438377.82502,
+              "error": null,
+              "children": [],
+              "node_name": null,
+              "parent_id": "4eae687a-b106-43b4-a08b-09d283355375",
+              "id": "2bc1ce94-5c50-4176-8470-024709320315",
+              "function": "openai.resources.chat.completions.Completions.create",
+              "system_metrics": {
+                "completion_tokens": 22,
+                "prompt_tokens": 165,
+                "total_tokens": 187
+              }
+            }
+          ],
+          "node_name": "q2sql",
+          "parent_id": "",
+          "id": "4eae687a-b106-43b4-a08b-09d283355375",
+          "function": "AzureOpenAI.chat",
+          "system_metrics": {
+            "completion_tokens": 22,
+            "prompt_tokens": 165,
+            "total_tokens": 187
+          }
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "completion_tokens": 22,
+        "prompt_tokens": 165,
+        "total_tokens": 187,
+        "duration": 92.884121
+      },
+      "result": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```",
+      "message_format": "basic"
+    },
+    {
+      "node": "runsql",
+      "flow_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d",
+      "run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_runsql_0",
+      "status": "Completed",
+      "inputs": {
+        "input1": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```"
+      },
+      "output": "[('B+',)]",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_0",
+      "start_time": "2024-11-13T03:06:17.835512Z",
+      "end_time": "2024-11-13T03:06:17.841028Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "my_python_tool",
+          "type": "Function",
+          "inputs": {
+            "input1": "```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```"
+          },
+          "output": "[('B+',)]",
+          "start_time": 1731438377.835779,
+          "end_time": 1731438377.840854,
+          "error": null,
+          "children": [],
+          "node_name": "runsql",
+          "parent_id": "",
+          "id": "ec0437e7-d512-48ab-80ac-8c3379d6698c",
+          "function": "my_python_tool",
+          "system_metrics": {}
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "[2024-11-13T03:06:17+0000] ```sql\nSELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';\n```\n[2024-11-13T03:06:17+0000] >>>SELECT Performance_Score \nFROM Agent_Profile \nWHERE Agent_ID = 'E1234';<<<\n[2024-11-13T03:06:17+0000] *>[('B+',)]<*\n",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "duration": 0.005516
+      },
+      "result": "[('B+',)]",
+      "message_format": "basic"
+    },
+    {
+      "node": "replyq",
+      "flow_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d",
+      "run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_replyq_0",
+      "status": "Completed",
+      "inputs": {
+        "deployment_name": "gpt-4o",
+        "temperature": 0.0,
+        "max_tokens": 1024,
+        "usrq": "I'm agent E1234, I want to know my performance.",
+        "sqlresult": "[('B+',)]",
+        "_inputs_to_escape": [
+          "usrq"
+        ]
+      },
+      "output": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!",
+      "metrics": null,
+      "error": null,
+      "parent_run_id": "0d9cecac-4f9e-46e4-ba60-f7ec9c67061d_0",
+      "start_time": "2024-11-13T03:06:17.848245Z",
+      "end_time": "2024-11-13T03:07:49.398247Z",
+      "index": 0,
+      "api_calls": [
+        {
+          "name": "AzureOpenAI.chat",
+          "type": "Function",
+          "inputs": {
+            "prompt": "system:\nYou are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees.  \n\nuser:\nYou are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees.  \n   \n# The question asked by the employee is as follows:  \n{{usrq}}  \n   \n# Based on the employee's question, your colleague has retrieved the following results from the database:  \n{{sqlresult}}  \n   \nPlease politely respond to the employee's question in English, incorporating the results retrieved from the database. Note, do not use an email format.",
+            "deployment_name": "gpt-4o",
+            "temperature": 0.0,
+            "max_tokens": 1024,
+            "usrq": "I'm agent E1234, I want to know my performance.",
+            "sqlresult": "[('B+',)]",
+            "_inputs_to_escape": [
+              "usrq"
+            ],
+            "stream": false
+          },
+          "output": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!",
+          "start_time": 1731438377.848696,
+          "end_time": 1731438469.396032,
+          "error": null,
+          "children": [
+            {
+              "name": "openai_chat",
+              "type": "LLM",
+              "inputs": {
+                "model": "gpt-4o",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees."
+                  },
+                  {
+                    "role": "user",
+                    "content": "You are a polite and professional customer service representative at an internal help desk of an insurance company, answering various questions from internal employees.  \n   \n# The question asked by the employee is as follows:  \nI'm agent E1234, I want to know my performance.  \n   \n# Based on the employee's question, your colleague has retrieved the following results from the database:  \n[('B+',)]  \n   \nPlease politely respond to the employee's question in English, incorporating the results retrieved from the database. Note, do not use an email format."
+                  }
+                ],
+                "temperature": 0.0,
+                "top_p": 1.0,
+                "n": 1,
+                "stream": false,
+                "presence_penalty": 0.0,
+                "frequency_penalty": 0.0,
+                "user": "",
+                "max_tokens": 1024
+              },
+              "output": {
+                "id": "chatcmpl-ASxzuGhdCuup33qjMQF26O04oCFIQ",
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "logprobs": null,
+                    "message": {
+                      "content": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!",
+                      "refusal": null,
+                      "role": "assistant",
+                      "audio": null,
+                      "function_call": null,
+                      "tool_calls": null
+                    },
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ],
+                "created": 1731467178,
+                "model": "gpt-4o-2024-08-06",
+                "object": "chat.completion",
+                "service_tier": null,
+                "system_fingerprint": "fp_d54531d9eb",
+                "usage": {
+                  "completion_tokens": 54,
+                  "prompt_tokens": 147,
+                  "total_tokens": 201,
+                  "completion_tokens_details": null,
+                  "prompt_tokens_details": null
+                },
+                "prompt_filter_results": [
+                  {
+                    "prompt_index": 0,
+                    "content_filter_results": {
+                      "hate": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "jailbreak": {
+                        "filtered": false,
+                        "detected": false
+                      },
+                      "self_harm": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "sexual": {
+                        "filtered": false,
+                        "severity": "safe"
+                      },
+                      "violence": {
+                        "filtered": false,
+                        "severity": "safe"
+                      }
+                    }
+                  }
+                ]
+              },
+              "start_time": 1731438377.851768,
+              "end_time": 1731438469.395419,
+              "error": null,
+              "children": [],
+              "node_name": null,
+              "parent_id": "5fed885f-c4bd-4942-a297-1ecaba7daf6b",
+              "id": "eefe81ab-6377-45e2-8c03-3f424a2c05c4",
+              "function": "openai.resources.chat.completions.Completions.create",
+              "system_metrics": {
+                "completion_tokens": 54,
+                "prompt_tokens": 147,
+                "total_tokens": 201
+              }
+            }
+          ],
+          "node_name": "replyq",
+          "parent_id": "",
+          "id": "5fed885f-c4bd-4942-a297-1ecaba7daf6b",
+          "function": "AzureOpenAI.chat",
+          "system_metrics": {
+            "completion_tokens": 54,
+            "prompt_tokens": 147,
+            "total_tokens": 201
+          }
+        }
+      ],
+      "cached_run_id": null,
+      "cached_flow_run_id": null,
+      "logs": {
+        "stdout": "",
+        "stderr": ""
+      },
+      "system_metrics": {
+        "completion_tokens": 54,
+        "prompt_tokens": 147,
+        "total_tokens": 201,
+        "duration": 91.550002
+      },
+      "result": "Hello! Thank you for reaching out. I’ve looked into your performance rating, and I’m pleased to inform you that your current performance grade is a B+. If you have any further questions or need additional details, feel free to ask. Keep up the great work!",
+      "message_format": "basic"
+    }
+  ]
+}

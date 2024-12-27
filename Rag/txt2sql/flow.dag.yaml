@@ -1,9 +1,40 @@
 inputs:
   txt:
     type: string
-    default: may i xxx
+    default: I'm agent E1234, I want to know my performance.
 outputs:
   result:
     type: string
-    reference: ${inputs.txt}
-nodes: []
+    reference: ${replyq.output}
+nodes:
+- name: q2sql
+  type: llm
+  source:
+    type: code
+    path: q2sql.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    question: ${inputs.txt}
+  connection: open_ai_connection
+  api: chat
+- name: runsql
+  type: python
+  source:
+    type: code
+    path: runsql.py
+  inputs:
+    input1: ${q2sql.output}
+- name: replyq
+  type: llm
+  source:
+    type: code
+    path: replyq.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    max_tokens: 1024
+    usrq: ${inputs.txt}
+    sqlresult: ${runsql.output}
+  connection: open_ai_connection
+  api: chat

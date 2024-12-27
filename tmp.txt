@@ -1,0 +1,95 @@
+connection
+prmpty
+  改英文
+flow
+
+txt2sql
+
+chunking+vectDB
+
+
+多了产品怎么办
+部署k8s
+
+
+
+
+你是一个sql专家，擅长把用户的问题转化成对mysql数据库的sql查询语句。
+
+现在mysql数据库中有一张mobile_stock表，表结构如下：
++--------------------+----------------+------+-----+---------+-------+
+| Field              | Type           | Null | Key | Default | Extra |
++--------------------+----------------+------+-----+---------+-------+
+| Product_id         | int            | NO   | PRI | NULL    |       |
+| Product_Name       | varchar(1000)  | YES  |     | NULL    |       |
+| Available_Quantity | int            | YES  |     | NULL    |       |
+| Mobile_Specs       | varchar(10000) | YES  |     | NULL    |       |
+| Product_Price      | int            | YES  |     | NULL    |       |
++--------------------+----------------+------+-----+---------+-------+
+
+现在用户的问题是：我想知道产品名中包含了Apple的手机产品的价格。
+
+请把用户的问题转换成查询mobile_stock表的sql。
+
+
+To find the prices of mobile products whose names contain "Apple" in the `mobile_stock` table, you can use the following SQL query:  
+   
+```sql  
+SELECT Product_Name, Product_Price  
+FROM mobile_stock  
+WHERE Product_Name LIKE '%Apple%';  
+```  
+   
+This query selects the `Product_Name` and `Product_Price` fields from the `mobile_stock` table where the `Product_Name` contains the substring "Apple". The `%` wildcard is used in the `LIKE` clause to match any sequence of characters before and after "Apple".
+
+
+CREATE TABLE Agent_Profile(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  Agent_ID VARCHAR(200) COMMENT 'Agent ID',
+  Enroll_Date DATE COMMENT 'Enroll Date of an Agent',
+  Performance_Score VARCHAR(200) COMMENT 'Performance Score or Performance Level of an Agent'
+) COMMENT='Agent Profile Information';
+
+INSERT INTO Agent_Profile (Agent_ID, Enroll_Date, Performance_Score)
+VALUES ('E1234','2021-6-1','B+');
+INSERT INTO Agent_Profile (Agent_ID, Enroll_Date, Performance_Score)
+VALUES ('F4321','2020-3-15','A');
+E1234	2021/6/1	B+
+F4321	2020/3/15	A
+
+
+
+你是一个保险公司IT部门的企业架构师，你对某个AI FLow工具与其它AI Flow工具对比后，提出了它的下述缺点：
+  * 对拖拽式编程和复杂工作流的支持没其它AI Flow多。
+  * 拖拽编程的VSCode extention不大稳定
+  * Flow的节点生态一般，很多常用组件（比如连MySQL/AI Search等）需要自定义节点或写代码
+请将上述缺点翻译成英文。
+Here are the identified disadvantages of a particular AI flow tool compared to other AI flow tools:  
+   
+- **Limited Support for Drag-and-Drop Programming and Complex Workflows**: It offers less support for drag-and-drop programming and complex workflows compared to other AI flow tools.  
+    
+- **Unstable VSCode Extension for Drag-and-Drop Programming**: The VSCode extension for drag-and-drop programming is not very stable.  
+   
+- **Mediocre Node Ecosystem**: The node ecosystem is average, requiring custom nodes or coding for many common components (such as connecting to MySQL or AI Search).
+
+
+
+你是一个保险公司IT部门的企业架构师，你对某个AI FLow工具与其它AI Flow工具对比后，提出了它的下述缺点：
+  * 对代码和命令行的支持更多，很多功能都可以通过代码和命令行调用，能更好地与公司原有代码/框架融合，更强的灵活性,可扩展性与可控性。
+  * 能与现存的版本管理工具结合，AI Flow及其各个Node的实现都是文件，且可以与项目的其它代码文件放在同一个地方，便于项目的版本管理。
+  * 测试功能比其它AI Flow要完善些。
+  * 可部署到K8S，虽然需要少量编码。
+  * 开源且厂商支持较好，比一般开源产品可靠。
+请将上述缺点翻译成英文。
+
+It seems there might be a misunderstanding as the points listed are actually advantages, not disadvantages. Here is the translation of these advantages into English:  
+   
+- **Greater Support for Code and Command Line**: It offers more support for code and command-line operations, allowing many functions to be invoked this way. This enables better integration with the company's existing code/frameworks and provides stronger flexibility, extensibility, and controllability.  
+   
+- **Integration with Existing Version Control Tools**: It can integrate with existing version control tools, as the AI flow and the implementation of its nodes are all files. These can be stored alongside other project code files, facilitating project version management.  
+   
+- **More Comprehensive Testing Features**: Its testing features are more comprehensive than those of other AI flow tools.  
+   
+- **Deployable to Kubernetes (K8S)**: It can be deployed to Kubernetes, although it requires a small amount of coding.  
+   
+- **Open Source with Good Vendor Support**: It is open source and comes with strong vendor support, making it more reliable than typical open-source products.

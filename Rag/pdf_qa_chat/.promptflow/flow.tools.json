@@ -1,0 +1,133 @@
+{
+  "package": {},
+  "code": {
+    "chat.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "chat.jinja2"
+    },
+    "q_seperate.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "text": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "q_seperate.jinja2"
+    },
+    "q_seperate_e.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "text": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "q_seperate_e.jinja2"
+    },
+    "split_prd.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "split_prd.py",
+      "function": "my_python_tool"
+    },
+    "analyz_q.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "usr_q": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "analyz_q.jinja2"
+    },
+    "analyz_q_variant_1.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "usr_q": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "analyz_q_variant_1.jinja2"
+    },
+    "rag_prd1.py": {
+      "type": "python",
+      "inputs": {
+        "prd_ls": {
+          "type": [
+            "object"
+          ]
+        },
+        "analyz_result": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "rag_prd1.py",
+      "function": "my_python_tool"
+    },
+    "rag_prd2.py": {
+      "type": "python",
+      "inputs": {
+        "prd_ls": {
+          "type": [
+            "object"
+          ]
+        },
+        "analyz_result": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "rag_prd2.py",
+      "function": "my_python_tool"
+    },
+    "prd_cmpr.py": {
+      "type": "python",
+      "inputs": {
+        "scor_ls1": {
+          "type": [
+            "object"
+          ]
+        },
+        "scor_ls2": {
+          "type": [
+            "object"
+          ]
+        },
+        "usr_q": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "prd_cmpr.py",
+      "function": "my_python_tool"
+    }
+  }
+}

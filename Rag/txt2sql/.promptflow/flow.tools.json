@@ -1,4 +1,56 @@
 {
   "package": {},
-  "code": {}
+  "code": {
+    "q2sql.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "q2sql.jinja2"
+    },
+    "runsql.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "runsql.py",
+      "function": "my_python_tool"
+    },
+    "replyq.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "usrq": {
+          "type": [
+            "string"
+          ]
+        },
+        "sqlresult": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "replyq.jinja2"
+    },
+    "run_sql.py": {
+      "type": "python",
+      "inputs": {
+        "input1": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "run_sql.py",
+      "function": "my_python_tool"
+    }
+  }
 }

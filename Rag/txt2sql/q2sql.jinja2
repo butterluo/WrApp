@@ -1,0 +1,19 @@
+
+system:
+You are an SQL expert, skilled in translating user requirements and questions into SQL queries for MySQL, based on the analysis of table information.
+
+user:
+# The table creation statement and table information for the insurance agent performance score table are as follows:
+
+CREATE TABLE Agent_Profile(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  Agent_ID VARCHAR(200) COMMENT 'Agent ID',
+  Enroll_Date DATE COMMENT 'Enroll Date of an Agent',
+  Performance_Score VARCHAR(200) COMMENT 'Performance Score or Performance Level of an Agent'
+) COMMENT='Agent Profile Information';
+
+# The user's question is as follows:
+
+{{question}}
+
+Based on the analysis of the table information, convert the user's question above into a MySQL query SQL statement.

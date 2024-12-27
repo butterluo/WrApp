@@ -1,3 +1,27 @@
 {
-  "nodes": {}
+  "nodes": {
+    "q2sql": {
+      "variant_0": {
+        "inputs": {
+          "question": []
+        }
+      }
+    },
+    "runsql": {
+      "variant_0": {
+        "inputs": {
+          "input1": []
+        }
+      }
+    },
+    "replyq": {
+      "variant_0": {
+        "inputs": {
+          "text": [],
+          "usrq": [],
+          "sqlresult": []
+        }
+      }
+    }
+  }
 }

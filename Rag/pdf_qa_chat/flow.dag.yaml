@@ -1,15 +1,17 @@
 $schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment_variables:
+  PF_DISABLE_TRACING: true
 environment:
   python_requirements_txt: requirements.txt
 inputs:
   text:
     type: string
-    default: "I’m a 32 years single woman in HK without children, and I’m interested
+    default: "I’m a 32 years single woman in HK with 2 children, and I’m interested
       in 2 of your products: AIA Voluntary Health Insurance Flexi and AIA
       Voluntary Health Insurance Privilege Ultra. Which one is more suitable for
       my situation and why?"
 outputs:
-  output_prompt:
+  answer:
     type: string
     reference: ${prd_cmpr.output}
 nodes:
